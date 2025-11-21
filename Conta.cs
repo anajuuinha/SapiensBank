@@ -20,4 +20,30 @@ public class Conta
         Senha = senha;
         Limite = limite;
     }
+
+    public bool Sacar(decimal valor)
+    {
+        if (valor <= 0) return false;
+        if (valor > Saldo + Limite) return false;
+        Saldo -= valor;
+        return true;
+    }
+
+    public void Depositar(decimal valor)
+    {
+        if (valor > 0) Saldo += valor;
+    }
+
+    public void AumentarLimite(decimal valor)
+    {
+        if (valor > 0) Limite += valor;
+    }
+
+    public bool DiminuirLimite(decimal valor)
+    {
+        if (valor <= 0) return false;
+        if (valor > Limite) return false;
+        Limite -= valor;
+        return true;
+    }
 }
